@@ -1,0 +1,16 @@
+{
+  "name": "financas-app",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "mobile",
+    "backend",
+    "admin"
+  ],
+  "scripts": {
+    "mobile": "cd mobile && npx expo start",
+    "backend": "cd backend && npm run dev",
+    "admin": "cd admin && npm run dev",
+    "install:all": "npm install && cd mobile && npm install && cd ../backend && npm install && cd ../admin && npm install"
+  }
+}

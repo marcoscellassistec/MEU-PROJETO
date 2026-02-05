@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: financas_db
+      POSTGRES_USER: financas_user
+      POSTGRES_PASSWORD: financas_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://financas_user:financas_password@db:5432/financas_db
+      JWT_SECRET: change-this-to-a-strong-secret
+      JWT_REFRESH_SECRET: change-this-to-another-strong-secret
+      PORT: 3000
+    depends_on:
+      - db
+
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
