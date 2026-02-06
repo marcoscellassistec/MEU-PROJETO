@@ -7,14 +7,25 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "scheme": "financas",
+
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#6C63FF"
     },
+
     "assetBundlePatterns": ["**/*"],
+
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#6C63FF"
+      },
+      "package": "com.seunome.financasapp"
+    },
+
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": true
       "bundleIdentifier": "com.financas.app",
       "buildNumber": "1",
       "infoPlist": {
